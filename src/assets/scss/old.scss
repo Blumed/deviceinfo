@@ -1,0 +1,197 @@
+
+a {
+    color: #268bd2;
+    text-decoration: none
+}
+.wrap {
+    position: relative;
+    width: 100%;
+    transition: transform 0.3s ease-in-out
+}
+.masthead {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 3rem
+}
+.container {
+    max-width: 38rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    margin-right: auto
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: BrandonText, 'PT Sans', Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    color: #313131;
+    letter-spacing: -0.025rem;
+    line-height: 1.25;
+    text-rendering: optimizeLegibility
+}
+.btn,
+h2,
+h4,
+h5,
+h6 {
+    margin-top: 1rem
+}
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 0.5rem
+}
+h2 {
+    font-size: 1.5rem
+}
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    top: -2rem
+}
+h3 {
+    margin-top: 1.5rem;
+    font-size: 1.25rem
+}
+.masthead-title {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 1.5rem;
+    color: #505050
+}
+.typed-cursor {
+    opacity: 1;
+    animation: blink 0.7s infinite
+}
+.page,
+.post {
+    margin-bottom: 4em
+}
+.post-title,
+.post-title a {
+    color: #303030;
+}
+.page-title,
+.post-title {
+    margin-top: 0px
+}
+.clear::after,
+.post-date,
+img,
+pre {
+    display: block
+}
+.post-date {
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+    color: #9a9a9a
+}
+dl,
+ol,
+p,
+ul {
+    margin-top: 0px;
+    margin-bottom: 1rem
+}
+code,
+pre {
+    background-color: #f9f9f9;
+    font-family: Menlo, Monaco, 'Courier New', monospace
+}
+abbr,
+code {
+    font-size: 85%
+}
+code {
+    padding: 0.25em 0.5em;
+    color: #bf616a;
+    border-radius: 3px
+}
+form,
+hr {
+    position: relative
+}
+hr {
+    margin: 1.5rem 0px;
+    border-width: 1px 0px;
+    border-top-style: solid;
+    border-top-color: #eee;
+    border-bottom-style: solid;
+    border-bottom-color: #fff;
+}
+.btn,
+abbr {
+    text-transform: uppercase
+}
+.btn {
+    font-size: 0.8rem;
+    padding: 0 0.6rem;
+    height: 50px;
+    display: table;
+    color: #515151;
+    border: 2px solid currentcolor;
+    transition: all 0.3s ease-in-out;
+    background: 0px 0px;
+}
+.btn span {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    top: 2px;
+}
+
+
+//Device 
+#showmewhoiam {
+   -ms-word-break: break-word;
+       word-break: break-word;
+}
+#information {
+	padding: 1rem;
+    border: 1px solid black;
+}
+// //IE
+.is-ie {
+    display: none;
+}
+
+.lte-ie9-hidden {
+    display: none;
+}
+.ieEdge-hidden {
+    display: none;
+}
+.is-ieEdge .is-ieEdge-hide {
+    display: none;
+}
+.is-ieEdge .is-ieEdge-show {
+    display: block !important;
+}
+.ie9lte .ie9lte-show {
+    display: block !important;
+}
+//IE 10 and 11
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
+   //IE10+ specific styles go here
+   .is-ie10plus .is-ie {
+       display: block !important;
+   }
+   .is-ie-hidden {
+       display: none !important;
+   }
+}
+.is-hidden {
+    display: none;
+}
