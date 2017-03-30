@@ -52,9 +52,10 @@ tags
 # Packages
 node_modules/*
 .tmp
-test/
-ignore/
-html/
+test/*
+ignore/*
+html/*
+site/*
 .bowerrc
 .editorconfig
 # Sublime

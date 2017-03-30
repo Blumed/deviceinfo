@@ -9,7 +9,10 @@
   </div>
 
   <nav class="sidebar-nav">
-    <a class="sidebar-nav-item{% if page.title == "Home" %} active{% endif %}" href="/">Home</a>
+  <div class="sidebar-nav-item-container">
+    <a class="sidebar-nav-item btn {% if page.title == "Home" %} active{% endif %}" href="/"><span>Home</span></a>
+  </div>
+    
 
     {% comment %}
       The code below dynamically generates a sidebar nav of pages with
@@ -20,13 +23,19 @@
     {% for node in pages_list %}
       {% if node.title != null %}
         {% if node.layout == "page" %}
-          <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
+        <div class="sidebar-nav-item-container">
+          <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %} btn" href="{{ node.url }}"><span>{{ node.title }}</span></a>
+          </div>
         {% endif %}
       {% endif %}
     {% endfor %}
-
-    <a class="sidebar-nav-item" href="https://github.com/Blumed/deviceinfo">Device Info on Github</a>
-    <a class="sidebar-nav-item" href="https://github.com/Blumed/deviceinfo/issues">Bug and Feature Tracking</a>
+<div class="sidebar-nav-item-container">
+  <a class="sidebar-nav-item btn" href="https://github.com/Blumed/deviceinfo"><span>Github</span></a>
+</div>
+    <div class="sidebar-nav-item-container">
+      <a class="sidebar-nav-item btn" href="https://github.com/Blumed/deviceinfo/issues"><span>Bug?</span></a>
+    </div>
+    
     <span class="sidebar-nav-item">Run by <a href="https://twitter.com/{{ site.author.twitter}}">@{{ site.author.name }}<a/></span>
   </nav>
 

@@ -1,4 +1,7 @@
 
+
+
+
 a {
     color: #268bd2;
     text-decoration: none
@@ -135,32 +138,14 @@ hr {
 abbr {
     text-transform: uppercase
 }
-.btn {
-    font-size: 0.8rem;
-    padding: 0 0.6rem;
-    height: 50px;
-    display: table;
-    color: #515151;
-    border: 2px solid currentcolor;
-    transition: all 0.3s ease-in-out;
-    background: 0px 0px;
-}
-.btn span {
-    display: table-cell;
-    vertical-align: middle;
-    position: relative;
-    top: 2px;
-}
+
+
 
 
 //Device 
 #showmewhoiam {
    -ms-word-break: break-word;
        word-break: break-word;
-}
-#information {
-	padding: 1rem;
-    border: 1px solid black;
 }
 // //IE
 .is-ie {

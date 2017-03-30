@@ -11,7 +11,11 @@ The main SCSS file for everything, yep
 
 #information {
   -webkit-transition: all 0.3s ease-in-out;
-          transition: all 0.3s ease-in-out; }
+          transition: all 0.3s ease-in-out;
+  margin-bottom: 84px;
+  padding: 1rem;
+  border-top: 1px solid black;
+  border-left: 1px solid black; }
 
 #showmewhoiam {
   margin-top: .5rem; }
@@ -24,6 +28,7 @@ The main SCSS file for everything, yep
   border-right: 0;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
+  border-right: 1px solid black;
   position: absolute;
   top: 0;
   right: 0;
@@ -36,6 +41,159 @@ h2.bookmarklet {
 
 a.bookmarklet {
   margin: 0 auto; }
+
+/*
+ * Sidebar
+ *
+ * The sidebar is the drawer, the item we are toggling with our handy hamburger
+ * button in the corner of the page.
+ *
+ * This particular sidebar implementation was inspired by Chris Coyier's
+ * "Offcanvas Menu with CSS Target" article, and the checkbox variation from the
+ * comments by a reader. It modifies both implementations to continue using the
+ * checkbox (no change in URL means no polluted browser history), but this uses
+ * `position` for the menu to avoid some potential content reflow issues.
+ *
+ * Source: http://css-tricks.com/off-canvas-menu-with-css-target/#comment-207504
+ */
+/* Style and "hide" the sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -14rem;
+  width: 14rem;
+  visibility: hidden;
+  overflow-y: auto;
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-size: .875rem;
+  background: #f6fff5;
+  border-right: 1px solid black;
+  color: black;
+  /* 15px */
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out; }
+  .sidebar a {
+    font-weight: normal;
+    border-top: 0;
+    color: #202020;
+    margin: 0 0 1rem 0; }
+
+@media (min-width: 30rem) {
+  .sidebar {
+    font-size: .75rem;
+    /* 14px */ } }
+
+/* Sidebar content */
+.sidebar-item {
+  padding: 1rem; }
+  .sidebar-item p:last-child {
+    margin-bottom: 0; }
+
+/* Sidebar nav */
+.sidebar-nav {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+
+.sidebar-nav-item-container {
+  margin-left: 10%;
+  border-top: 1px solid black; }
+
+.sidebar-nav-item {
+  display: block;
+  padding: 0;
+  padding: .5rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); }
+  .sidebar-nav-item.active {
+    text-decoration: none;
+    background-color: #22245e;
+    color: #f6fff5;
+    border-left: 1px solid black; }
+
+a.sidebar-nav-item:hover, a.sidebar-nav-item:focus {
+  text-decoration: none;
+  background-color: #7B7F7A;
+  color: white; }
+
+@media (min-width: 48rem) {
+  .sidebar-item {
+    padding: 1.5rem; }
+  .sidebar-nav-item {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem; } }
+
+/* Hide the sidebar checkbox that we toggle with `.sidebar-toggle` */
+.sidebar-checkbox {
+  display: none; }
+
+/* Style the `label` that we use to target the `.sidebar-checkbox` */
+.sidebar-toggle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 2.5rem;
+  padding: .9rem .65rem;
+  color: #505050;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  min-height: 2.5rem;
+  line-height: 2.5rem;
+  font-size: 20px;
+  cursor: pointer; }
+  .sidebar-toggle:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-bottom: .125rem;
+    border-top: .375rem double;
+    border-bottom: .125rem solid;
+    /* Make the border inside the box */
+    box-sizing: border-box; }
+  .sidebar-toggle:active {
+    color: #f6fff5;
+    background-color: #505050; }
+
+#sidebar-checkbox:checked ~ .sidebar-toggle {
+  color: #fff;
+  background-color: #22245e; }
+
+@media (min-width: 30.1rem) {
+  .sidebar-toggle {
+    position: fixed;
+    width: 2.5rem;
+    padding-top: 0.95rem; }
+    .sidebar-toggle:before {
+      padding-bottom: .15rem;
+      border-top-width: .45rem;
+      border-bottom-width: .15rem; } }
+
+/* Slide effect
+ *
+ * Handle the sliding effects of the sidebar and content in one spot, seperate
+ * from the default styles.
+ *
+ * As an a heads up, we don't use `transform: translate3d()` here because when
+ * mixed with `position: fixed;` for the sidebar toggle, it creates a new
+ * containing block. Put simply, the fixed sidebar toggle behaves like
+ * `position: absolute;` when transformed.
+ *
+ * Read more about it at http://meyerweb.com/eric/thoughts/2011/09/12/.
+ */
+.wrap, .sidebar, .sidebar-toggle {
+  -webkit-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden; }
+
+.wrap, .sidebar-toggle {
+  -webkit-transition: -webkit-transform .3s ease-in-out;
+  transition: transform .3s ease-in-out; }
+
+#sidebar-checkbox:checked + .sidebar {
+  visibility: visible; }
+
+#sidebar-checkbox:checked ~ .sidebar, #sidebar-checkbox:checked ~ .wrap, #sidebar-checkbox:checked ~ .sidebar-toggle {
+  -webkit-transform: translateX(14rem);
+  transform: translateX(14rem); }
 
 @font-face {
   font-family: 'BrandonText';
@@ -186,30 +344,9 @@ hr {
 abbr {
   text-transform: uppercase; }
 
-.btn {
-  font-size: 0.8rem;
-  padding: 0 0.6rem;
-  height: 50px;
-  display: table;
-  color: #515151;
-  border: 2px solid currentcolor;
-  -webkit-transition: all 0.3s ease-in-out;
-          transition: all 0.3s ease-in-out;
-  background: 0px 0px; }
-
-.btn span {
-  display: table-cell;
-  vertical-align: middle;
-  position: relative;
-  top: 2px; }
-
 #showmewhoiam {
   -ms-word-break: break-word;
   word-break: break-word; }
-
-#information {
-  padding: 1rem;
-  border: 1px solid black; }
 
 .is-ie {
   display: none; }
@@ -269,12 +406,32 @@ abbr {
 * {
   box-sizing: border-box; }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0; }
 
-a {
+a,
+.btn {
   color: #22245e; }
+
+.btn {
+  font-size: 0.8rem;
+  padding: 0 0.5rem;
+  min-height: 50px;
+  line-height: 50px;
+  display: table;
+  color: #515151;
+  border: 1px solid black;
+  -webkit-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+  background: 0px 0px;
+  text-transform: uppercase; }
+  .btn span {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    top: 2px; }
 
 html {
   font-family: "BrandonText", "PT Sans", Helvetica, Arial, serif;
@@ -300,7 +457,12 @@ a {
 
 /* `:focus` is linked to `:hover` for basic accessibility */
 /* Headings */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-bottom: .5rem;
   font-weight: bold;
   line-height: 1.25;
@@ -318,7 +480,9 @@ h3 {
   margin-top: 1.5rem;
   font-size: 1.25rem; }
 
-h4, h5, h6 {
+h4,
+h5,
+h6 {
   margin-top: 1rem;
   font-size: 1rem; }
 
@@ -331,7 +495,9 @@ strong {
   color: #303030; }
 
 /* Lists */
-ul, ol, dl {
+ul,
+ol,
+dl {
   margin-top: 0;
   margin-bottom: 1rem; }
 
@@ -359,7 +525,8 @@ abbr {
     border-bottom: 1px dotted #e5e5e5; }
 
 /* Code */
-code, pre {
+code,
+pre {
   font-family: Menlo, Monaco, "Courier New", monospace; }
 
 code {
@@ -419,11 +586,13 @@ table {
   border: 1px solid #e5e5e5;
   border-collapse: collapse; }
 
-td, th {
+td,
+th {
   padding: .25rem .5rem;
   border: 1px solid #e5e5e5; }
 
-tbody tr:nth-child(odd) td, tbody tr:nth-child(odd) th {
+tbody tr:nth-child(odd) td,
+tbody tr:nth-child(odd) th {
   background-color: #f9f9f9; }
 
 /*
@@ -487,7 +656,8 @@ tbody tr:nth-child(odd) td, tbody tr:nth-child(odd) th {
  * Each post is wrapped in `.post` and is used on default and post layouts. Each
  * page is wrapped in `.page` and is only used on the page layout.
  */
-.page, .post {
+.page,
+.post {
   margin-bottom: 4em; }
 
 /* Blog post or page title */
@@ -499,7 +669,8 @@ tbody tr:nth-child(odd) td, tbody tr:nth-child(odd) th {
   .post-title a {
     color: #303030; }
 
-.page-title, .post-title {
+.page-title,
+.post-title {
   margin-top: 0; }
 
 /* Meta data line below post title */
@@ -854,145 +1025,6 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center; }
     .masthead-title small {
       display: none; } }
-
-/*
- * Sidebar
- *
- * The sidebar is the drawer, the item we are toggling with our handy hamburger
- * button in the corner of the page.
- *
- * This particular sidebar implementation was inspired by Chris Coyier's
- * "Offcanvas Menu with CSS Target" article, and the checkbox variation from the
- * comments by a reader. It modifies both implementations to continue using the
- * checkbox (no change in URL means no polluted browser history), but this uses
- * `position` for the menu to avoid some potential content reflow issues.
- *
- * Source: http://css-tricks.com/off-canvas-menu-with-css-target/#comment-207504
- */
-/* Style and "hide" the sidebar */
-.sidebar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: -14rem;
-  width: 14rem;
-  visibility: hidden;
-  overflow-y: auto;
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
-  font-size: .875rem;
-  /* 15px */
-  color: rgba(255, 255, 255, 0.6);
-  background-color: #202020;
-  -webkit-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out; }
-  .sidebar a {
-    font-weight: normal;
-    color: #fff; }
-
-@media (min-width: 30rem) {
-  .sidebar {
-    font-size: .75rem;
-    /* 14px */ } }
-
-/* Sidebar content */
-.sidebar-item {
-  padding: 1rem; }
-  .sidebar-item p:last-child {
-    margin-bottom: 0; }
-
-/* Sidebar nav */
-.sidebar-nav {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-
-.sidebar-nav-item {
-  display: block;
-  padding: .5rem 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1); }
-  .sidebar-nav-item.active {
-    text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: transparent; }
-
-a.sidebar-nav-item:hover, a.sidebar-nav-item:focus {
-  text-decoration: none;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: transparent; }
-
-@media (min-width: 48rem) {
-  .sidebar-item {
-    padding: 1.5rem; }
-  .sidebar-nav-item {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem; } }
-
-/* Hide the sidebar checkbox that we toggle with `.sidebar-toggle` */
-.sidebar-checkbox {
-  display: none; }
-
-/* Style the `label` that we use to target the `.sidebar-checkbox` */
-.sidebar-toggle {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  display: block;
-  width: 2.2rem;
-  padding: .5rem .65rem;
-  color: #505050;
-  border-radius: 4px;
-  cursor: pointer; }
-  .sidebar-toggle:before {
-    display: block;
-    content: "";
-    width: 100%;
-    padding-bottom: .125rem;
-    border-top: .375rem double;
-    border-bottom: .125rem solid;
-    /* Make the border inside the box */
-    box-sizing: border-box; }
-  .sidebar-toggle:active {
-    color: #fff;
-    background-color: #505050; }
-
-#sidebar-checkbox:checked ~ .sidebar-toggle {
-  color: #fff;
-  background-color: #505050; }
-
-@media (min-width: 30.1rem) {
-  .sidebar-toggle {
-    position: fixed;
-    width: 2.25rem; }
-    .sidebar-toggle:before {
-      padding-bottom: .15rem;
-      border-top-width: .45rem;
-      border-bottom-width: .15rem; } }
-
-/* Slide effect
- *
- * Handle the sliding effects of the sidebar and content in one spot, seperate
- * from the default styles.
- *
- * As an a heads up, we don't use `transform: translate3d()` here because when
- * mixed with `position: fixed;` for the sidebar toggle, it creates a new
- * containing block. Put simply, the fixed sidebar toggle behaves like
- * `position: absolute;` when transformed.
- *
- * Read more about it at http://meyerweb.com/eric/thoughts/2011/09/12/.
- */
-.wrap, .sidebar, .sidebar-toggle {
-  -webkit-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
-  backface-visibility: hidden; }
-
-.wrap, .sidebar-toggle {
-  -webkit-transition: -webkit-transform .3s ease-in-out;
-  transition: transform .3s ease-in-out; }
-
-#sidebar-checkbox:checked + .sidebar {
-  visibility: visible; }
-
-#sidebar-checkbox:checked ~ .sidebar, #sidebar-checkbox:checked ~ .wrap, #sidebar-checkbox:checked ~ .sidebar-toggle {
-  -webkit-transform: translateX(14rem);
-  transform: translateX(14rem); }
 
 /*
  * Posts and pages

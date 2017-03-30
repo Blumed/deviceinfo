@@ -6,8 +6,13 @@
 	float: left;
 	
 }
+
 #information {
 	transition: all 0.3s ease-in-out;
+	margin-bottom: 84px;
+	padding: 1rem;
+    border-top: $border;
+    border-left: $border;
 }
 #showmewhoiam {
 	margin-top: .5rem;
@@ -18,8 +23,9 @@
 #copy {
 	border-top: 0;
 	border-right: 0;
-	border-bottom: 1px solid black;
-	border-left: 1px solid black;
+	border-bottom: $border;
+	border-left: $border;
+	border-right: $border;
 	position: absolute;
 	top: 0;
 	right: 0;

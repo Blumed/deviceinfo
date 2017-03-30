@@ -22,7 +22,10 @@
             {{ content }}
         </div>
     </div>
-    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+       <label for="sidebar-checkbox" class="sidebar-toggle"></label> 
+
+    
     
     <!--[if lt IE 9]>
     <script src="/assets/js/vendor/jquery/jquery.1.11.3.min.js"></script>
@@ -30,10 +33,10 @@
     <!--[if gte IE 9]><!-->
     <script src="/assets/javascript/vendor/jquery/jquery.2.1.4.min.js"></script>
 
- 
+    {% if page.title == "Home" %}
    <!--  <script src="/assets/javascript/bookmarklet.js"></script> -->
     <script src="/assets/javascript/index.js"></script>
-
+    {% endif %}
 
     <script>
     (function(i, s, o, g, r, a, m) {
