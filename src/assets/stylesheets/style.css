@@ -348,33 +348,6 @@ abbr {
   -ms-word-break: break-word;
   word-break: break-word; }
 
-.is-ie {
-  display: none; }
-
-.lte-ie9-hidden {
-  display: none; }
-
-.ieEdge-hidden {
-  display: none; }
-
-.is-ieEdge .is-ieEdge-hide {
-  display: none; }
-
-.is-ieEdge .is-ieEdge-show {
-  display: block !important; }
-
-.ie9lte .ie9lte-show {
-  display: block !important; }
-
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  .is-ie10plus .is-ie {
-    display: block !important; }
-  .is-ie-hidden {
-    display: none !important; } }
-
-.is-hidden {
-  display: none; }
-
 /*
  *                        ___
  *                       /\_  *  _____     ___     ___\//\ \      __
