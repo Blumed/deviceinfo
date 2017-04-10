@@ -118,7 +118,7 @@
 
 
             // system
-            var os = unknown;
+            //var os = unknown;
             var clientStrings = [
                 { s: 'Windows 10', r: /(Windows 10.0|Windows NT 10.0)/ },
                 { s: 'Windows 8.1', r: /(Windows 8.1|Windows NT 6.3)/ },
@@ -164,7 +164,7 @@
                 osVersion = /Windows (.*)/.exec(os)[1];
                 os = 'Windows';
             }
-
+           
             switch (os) {
                 case 'Mac OS X':
                     osVersion = /Mac OS X (10[\.\_\d]+)/.exec(nAgt)[1];
@@ -178,9 +178,15 @@
                     osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer);
                     osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
                     break;
-            }
-
-
+                case 'iPhone':
+                    osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer);
+                    osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
+                    break;
+                case 'iPad':
+                    osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer);
+                    osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
+                    break;
+            }          
         }
         //Not sure how to add IE edge version number just yet. Blanking it out for now
         if (browser === 'Internet Explorer Edge') {
@@ -235,6 +241,7 @@
 
 
         showmetime.innerHTML = timeStamp;
+        console.log(window.navigator);
     }
     checkthisthingout();
 })();
@@ -254,3 +261,4 @@ $('#update-btn').on('click', function () {
     console.log(replaceText[8]);
 });
 
+ 

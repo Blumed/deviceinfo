@@ -11,4 +11,5 @@ gem 'jekyll-paginate'
 gem 'jekyll-sitemap'
 gem 'jekyll-seo-tag'
 gem 'jekyll-redirect-from'
+gem 'rouge'
 gem 'jekyll-compose', group: [:jekyll_plugins]

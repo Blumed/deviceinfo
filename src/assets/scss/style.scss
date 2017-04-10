@@ -4,6 +4,8 @@ The main SCSS file for everything, yep
 @import "variables";
 @import "components/app";
 @import "components/sidebar";
+@import "components/themes";
+@import "components/pagination";
 @import "font";
 @import "old";
 @import "poole";

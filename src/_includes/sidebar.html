@@ -29,6 +29,18 @@
         {% endif %}
       {% endif %}
     {% endfor %}
+
+    {% assign installation_page_list = site.installing-bookmarklet %}
+    {% for node in installation_page_list %}
+      {% if node.title != null %}
+        {% if node.layout == "page" %}
+        <div class="sidebar-nav-item-container">
+          <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %} btn" href="{{ node.url }}"><span>{{ node.title }}</span></a>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
 <div class="sidebar-nav-item-container">
   <a class="sidebar-nav-item btn" href="https://github.com/Blumed/deviceinfo"><span>Github</span></a>
 </div>

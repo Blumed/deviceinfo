@@ -162,9 +162,17 @@ javascript:(function() {
                     osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer);
                     osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
                     break;
+                case 'iPhone':
+                    osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer);
+                    osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
+                    break;
+                case 'iPad':
+                    osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer);
+                    osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
+                    break;
             }
-
-
+            console.log(os);
+            console.log(osVersion);
         }
 
         if (browser === 'Internet Explorer Edge') {

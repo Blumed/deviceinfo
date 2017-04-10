@@ -42,6 +42,10 @@ markdown: redcarpet
 redcarpet:
   extensions: ['no_intra_emphasis', 'tables', 'fenced_code_blocks', 'autolink', 'smart',
               'strikethrough', 'superscript', 'underline', 'highlight', 'footnotes']
-highlighter: true
+highlighter: rouge
 
-gems: [jekyll-paginate, jekyll-gist]
+gems: [jekyll-paginate, jekyll-gist, rouge]
+
+collections:
+  installing-bookmarklet:
+    output: true
