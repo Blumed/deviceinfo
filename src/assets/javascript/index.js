@@ -118,7 +118,7 @@
 
 
             // system
-            //var os = unknown;
+            var os = unknown;
             var clientStrings = [
                 { s: 'Windows 10', r: /(Windows 10.0|Windows NT 10.0)/ },
                 { s: 'Windows 8.1', r: /(Windows 8.1|Windows NT 6.3)/ },
@@ -136,7 +136,9 @@
                 { s: 'Windows 3.11', r: /Win16/ },
                 { s: 'Nexus', r: /Nexus/ },
                 { s: 'Samsung', r: /SM-|GT-/ },
-                { s: 'Android', r: /Android/ },
+                { s: 'LG', r: /LG-/ },
+                { s: 'HTC', r: /HTC/ },
+                { s: 'Pixel', r: /Pixel/ },
                 { s: 'Open BSD', r: /OpenBSD/ },
                 { s: 'Sun OS', r: /SunOS/ },
                 { s: 'Linux', r: /(Linux|X11)/ },
@@ -157,37 +159,41 @@
                     break;
                 }
             }
-
+            //console.log(cs);
             var osVersion = unknown;
 
             if (/Windows/.test(os)) {
                 osVersion = /Windows (.*)/.exec(os)[1];
                 os = 'Windows';
             }
-           
+
+            
+            
             switch (os) {
-                case 'Mac OS X':
+                  case 'Mac OS X':
                     osVersion = /Mac OS X (10[\.\_\d]+)/.exec(nAgt)[1];
                     break;
 
-                case 'Android':
+                  case 'Android':
+                  case 'Nexus':
+                  case 'Samsung':
+                  case 'HTC':
+                  case 'LG':
+                  case 'Pixel':  
                     osVersion = /Android ([\.\_\d]+)/.exec(nAgt)[1];
                     break;
 
-                case 'OS':
+                  case 'OS':
+                  case 'iPhone':
+                  case 'iPad':
                     osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer);
                     osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
-                    break;
-                case 'iPhone':
-                    osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer);
-                    osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
-                    break;
-                case 'iPad':
-                    osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer);
-                    osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
-                    break;
+                break;
             }          
         }
+   
+        //console.log(os);
+        
         //Not sure how to add IE edge version number just yet. Blanking it out for now
         if (browser === 'Internet Explorer Edge') {
             // var regex = /((Edge\/))\w(.)/g;

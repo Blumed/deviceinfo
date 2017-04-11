@@ -120,7 +120,9 @@ javascript:(function() {
                 { s: 'Windows 3.11', r: /Win16/ },
                 { s: 'Nexus', r: /Nexus/ },
                 { s: 'Samsung', r: /SM-|GT-/ },
-                { s: 'Android', r: /Android/ },
+                { s: 'LG', r: /LG-/ },
+                { s: 'HTC', r: /HTC/ },
+                { s: 'Pixel', r: /Pixel/ },
                 { s: 'Open BSD', r: /OpenBSD/ },
                 { s: 'Sun OS', r: /SunOS/ },
                 { s: 'Linux', r: /(Linux|X11)/ },
@@ -141,7 +143,7 @@ javascript:(function() {
                     break;
                 }
             }
-
+            
             var osVersion = unknown;
 
             if (/Windows/.test(os)) {
@@ -150,31 +152,28 @@ javascript:(function() {
             }
 
             switch (os) {
-                case 'Mac OS X':
+                  case 'Mac OS X':
                     osVersion = /Mac OS X (10[\.\_\d]+)/.exec(nAgt)[1];
                     break;
 
-                case 'Android':
+                  case 'Android':
+                  case 'Nexus':
+                  case 'Samsung':
+                  case 'HTC':
+                  case 'LG':
+                  case 'Pixel':  
                     osVersion = /Android ([\.\_\d]+)/.exec(nAgt)[1];
                     break;
 
-                case 'OS':
+                  case 'OS':
+                  case 'iPhone':
+                  case 'iPad':
                     osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer);
                     osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
-                    break;
-                case 'iPhone':
-                    osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer);
-                    osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
-                    break;
-                case 'iPad':
-                    osVersion = /OS (\d+)_(\d+)_?(\d+)?/.exec(nVer);
-                    osVersion = osVersion[1] + '.' + osVersion[2] + '.' + (osVersion[3] | 0);
-                    break;
+                break;
             }
-            console.log(os);
-            console.log(osVersion);
         }
-
+       
         if (browser === 'Internet Explorer Edge') {
             majorVersion = '';
         }
